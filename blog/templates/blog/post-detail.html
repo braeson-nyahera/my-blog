@@ -9,15 +9,11 @@
     <title>Blog posts</title>
 </head>
 <body class="bg-blue-50">
-    {% for post in posts %}
-        <a href="{% url 'post-detail' post.id %}">
-        <div class="w-350 bg-green-100 m-2 p-4 rounded">
-            <p class="text-3xl font-bold">{{ post.title }}</p>
-            <small>By: {{ post.author }}</small>
-            <p class="text-xl font-semibold">{{ post.content }}</p>
-            <p></p>
-        </div>
-    </a>
-    {% endfor %}
+    <div class="w-350 bg-green-100 m-2 p-4 rounded">
+        <p class="text-3xl font-bold">{{ post.title }}</p>
+        <small>By: {{ post.author }}</small>
+        <p class="text-xl font-semibold">{{ post.content }}</p>
+        <p></p>
+    </div>
 </body>
 </html>
