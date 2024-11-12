@@ -10,12 +10,11 @@
 </head>
 <body class="bg-blue-50">
     <div class="w-350 bg-green-100 m-2 p-4 rounded">
-        <p class="text-3xl font-bold">{{ post.title }}</p>
-        <small>By: {{ post.author }}</small>
-        <p class="text-xl font-semibold">{{ post.content }}</p>
-        <p>
-            <a href="{% url 'edit-post' post.id %}"> Edit Post </a>
-        </p>
+        <form method='POST' enctype= 'multipart/form-data'>
+            {% csrf_token %}
+            {{ post_edit }}
+            <button class="font-medium p-2 bg-blue-500 rounded text-white" type="submit">Save Post</button>
+        </form>
     </div>
 </body>
 </html>
