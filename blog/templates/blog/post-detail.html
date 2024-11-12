@@ -15,6 +15,7 @@
         <p class="text-xl font-semibold">{{ post.content }}</p>
         <p>
             <a href="{% url 'edit-post' post.id %}"> Edit Post </a>
+            <a href= "{% url 'delete-post' post.id %}">Delete Post</a>
         </p>
     </div>
 </body>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from .models import Post
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView,DetailView, DeleteView
 from .forms import PostForm
 
 # Create your views here.
@@ -49,3 +50,14 @@ def PostUpdateView(request, id):
     }
 
     return render(request, 'blog/edit-post.html', context)
+
+def PostDeleteView(request, id):
+    post = get_object_or_404(Post, id=id)
+    if request.method == "POST":
+        post.delete()
+        return redirect('home')
+    
+    context={
+        'post':post,
+    }
+    return render(request,'blog/post-delete-confirm.html',context)
