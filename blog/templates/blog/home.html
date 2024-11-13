@@ -10,6 +10,7 @@
 </head>
 <body class="bg-blue-50">
     <a class="font-medium p-2 bg-blue-500 rounded text-white" href="{% url 'add-post' %}">New Post</a>
+    <a class="font-medium p-2 bg-blue-500 rounded text-white" href="{% url 'logout-confirm' %}">Logout</a>
     {% for post in posts %}
         <a href="{% url 'post-detail' post.id %}">
         <div class="w-350 bg-green-100 m-2 p-4 rounded">

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Blog posts</title>
+</head>
+<body class="bg-blue-50">
+    <div class="w-350 bg-green-100 m-2 p-4 rounded">
+
+        <form method='POST'>
+            {% csrf_token %}
+            Are you sure you want to logout?
+            <button class="font-medium p-2 bg-blue-500 rounded text-white" type="submit">logout</button>
+            <a href="{% url 'home' %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
