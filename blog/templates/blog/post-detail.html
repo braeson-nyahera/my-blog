@@ -17,6 +17,17 @@
             <a href="{% url 'edit-post' post.id %}"> Edit Post </a>
             <a href= "{% url 'delete-post' post.id %}">Delete Post</a>
         </p>
+        <div>
+            <h3 class="font-semibold">Comments</h3>
+            {% if not post.comments.all %}
+                <small>No comments.....<a href="">Be the first to comment</a></small> 
+            {% else %}
+                {% for comment in post.comments.all %}
+                    <h2>{{ comment.title }}-{{ comment.created_at }}</h2>
+                    <span>{{ comment.body }}</span>
+                {% endfor %}
+            {% endif %}    
+        </div>
     </div>
 </body>
 </html>
