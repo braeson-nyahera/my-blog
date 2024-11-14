@@ -1,0 +1,18 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Blog posts</title>
+</head>
+<body class="bg-blue-50">
+    <header class="w-full mb-2"><img class="mx-auto w-3/6" src= "{% static 'blog/assets/blog_header.png' %}"></header>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>
