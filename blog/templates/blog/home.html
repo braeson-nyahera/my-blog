@@ -2,18 +2,22 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <a class="font-medium p-2 bg-blue-500 rounded text-white" href="{% url 'add-post' %}">New Post</a>
-        <a class="font-medium p-2 bg-blue-500 rounded text-white" href="{% url 'logout-confirm' %}">Logout</a>
+        <a class="font-medium p-2 bg-blue-500 rounded text-white ml-5" href="{% url 'add-post' %}">New Post</a>
+        <a class="font-medium p-2 bg-blue-500 rounded text-white ml-3" href="{% url 'logout-confirm' %}">Logout</a>
     {% else %}
     <div class="mx-auto">
-        <span class="font-semibold">Welcome to Warsraiders posts.... </span><a class="font-medium p-2 bg-blue-500 rounded text-white" href="{% url 'login' %}">Login</a>
+        <!-- HTML Structure -->
+    <div class="mx-4 bg-blue-100 border border-blue-500 py-2 px-4 rounded">
+        <span class="font-bold">Welcome to Warsraiders posts....</span>
+        <a class="font-medium p-2 bg-blue-500 rounded text-white" href="{% url 'login' %}">Login</a>
+            or create an account <a class="font-semibold text-blue-600"href= "#">here.</a>
     </div>
         {% endif %}
     {% for post in posts %}
         <a href="{% url 'post-detail' post.id %}">
         <div class="w-350 bg-green-100 m-2 p-4 rounded">
             <p class="text-3xl font-bold">{{ post.title }}</p>
-            <small>By: {{ post.author }}</small>
+            <small>By: {{ post.author }}.-<i>{{post.created_at }}</i></small>
             <p class="text-xl font-semibold">{{ post.content }}</p>
             <p></p>
         </div>
