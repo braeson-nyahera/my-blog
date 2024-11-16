@@ -10,7 +10,7 @@
     <div class="mx-4 bg-blue-100 border border-blue-500 py-2 px-4 rounded">
         <span class="font-bold">Welcome to Warsraiders posts....</span>
         <a class="font-medium p-2 bg-blue-500 rounded text-white" href="{% url 'login' %}">Login</a>
-            or create an account <a class="font-semibold text-blue-600"href= "#">here.</a>
+            or create an account <a class="font-semibold text-blue-600"href= "{% url 'register' %}">here.</a>
     </div>
         {% endif %}
     {% for post in posts %}
