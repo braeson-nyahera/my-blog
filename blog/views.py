@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from .models import Post
-from django.views.generic import ListView,DetailView, DeleteView
-from .forms import PostForm
+from django.views.generic import ListView
+from .forms import PostForm, CommentForm
 
 # Create your views here.
 class PostListView(ListView):
@@ -11,9 +11,29 @@ class PostListView(ListView):
     context_object_name = "posts"
     ordering = ['-created_at']
 
-class PostDetailView(DetailView):
-    model = Post
-    template_name = "blog/post-detail.html"
+def PostDetailView(request, id):
+    post= get_object_or_404(Post, pk=id)
+    comments = post.comments.all()
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect('post-detail',post.id)
+    else:
+        form = CommentForm()
+    
+    context={
+        'post':post,
+        'comments':comments,
+        'form':form,
+    }
+
+    return render(request, 'blog/post-detail.html', context)
 
 def PostCreateView(request):
     if request.method == 'POST':

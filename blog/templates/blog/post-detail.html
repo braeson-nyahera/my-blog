@@ -20,13 +20,17 @@
             {% else %}
                 {% for comment in post.comments.all %}
                     <div class="rounded bg-green-50 w-fit p-1 mb-1">
-                        <p><span class="font-semibold px-1">{{ comment.title }}</span>-{{ comment.created_at }}</p>
+                        <p><span class="font-semibold px-1">{{ comment.author}}</span>-{{ comment.created_at }}</p>
                         <span class="font-semibold px-3">{{ comment.body }}</span>
                     </div>
                 {% endfor %}
             {% endif %} 
             <div>
-                Add comment.
+                <form method='POST' enctype = 'multipart/form-data'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="font-medium p-2 bg-blue-500 rounded text-white" type="submit">Add comment</button>
+                </form>
             </div>   
         </div>
     </div>
